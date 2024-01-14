@@ -1,0 +1,17 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "devDependencies": {
+    "parcel": "^2.10.3",
+    "tailwindcss": "^3.3.5"
+  },
+  "scripts": {
+    "start": "npx tailwindcss -i ./src/style.css -o ./dist/output.css --watch",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "core-js": "^3.33.3",
+    "fractional": "^1.0.0",
+    "regenerator-runtime": "^0.14.0"
+  }
+}

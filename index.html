@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
+    
+    <link rel="shortcut icon" href="src/images/favicon.png">
+
+    <link rel="stylesheet" href="src/normalize.css">
+    <link rel="stylesheet" href="src/all.min.css">
+    <link rel="stylesheet" href="dist/output.css">
+
+    <script type="module" src="src/js/controller.js"></script>
+
+    <title>forkify // Search over 1,000,000 recipes</title>
+</head>
+<body class="flex justify-center items-center m-auto ">
+    <div class="entire min-h-screen w-full bg-white text-primary-color">
+        <header class="flex justify-around items-center gap-5 bg-[#f9f5f3] min-h-[9rem]">
+            <img src="src/images/logo (2).png" alt="forkify" class="h-[4.6rem] mr-[5rem] ml-[2rem]">
+            <form class="search flex justify-center items-center  bg-white rounded-[8rem]">
+                <input type="text" placeholder="Search over 1,000,000 recipes..." class="search__field py-4 px-8 rounded-[8rem] w-[30rem] h-full focus:outline-none font-normal text-[1.6rem]">
+                <button class="btn search__btn py-5 px-12 font-normal rounded-[8rem] bg-gradient h-full text-white flex justify-between items-center gap-4 duration-300 hover:scale-105">
+                    <i class="fa-solid fa-magnifying-glass text-[1.5rem]"></i>
+                    <span class="text-[1.5rem] font-bold">SEARCH</span>
+                </button>
+            </form>
+            <nav class="min-h-[9rem]">
+                <ul class="nav__list flex justify-center items-center min-h-[9rem] ">
+                    <li class="nav__item px-5 duration-300 hover:bg-slate-hover min-h-[9rem] flex">
+                        <button class="nav__btn nav__btn--add-recipe flex justify-between items-center gap-3">
+                            <i class="fa-regular fa-pen-to-square text-result-text"></i>
+                            <span class="uppercase text-[1.5rem] font-bold">Add Recipe</span>
+                        </button>
+                        <!-- <div class="bookmarks opacity-0"></div> -->
+                    </li>
+                    
+                    <li class="nav__item relative min-h-[9rem] flex ml-5 px-5 duration-300 hover:bg-slate-hover">
+                        <button class="nav__btn nav__btn--bookmarks flex justify-between items-center gap-3">
+                            <i class="fa-regular fa-bookmark text-result-text"></i>
+                            <span class="uppercase text-[1.5rem] font-bold">Bookmarks</span>
+                        </button>
+                        <div class="bookmarks absolute py-[1rem] z-10 w-[40rem] top-[9rem] right-[-2.5rem] bg-[#fff] invisible opacity-0 duration-300 hover:visible hover:opacity-100 ">
+                            <ul class="bookmarks__list">
+
+                                <div class="message flex items-center my-0 mx-auto max-w-[40rem] py-[5rem] px-[4rem]">
+                                    <div class="mr-[1.2rem]">
+                                        <i class="fa-solid fa-triangle-exclamation text-result-text text-[2.5rem]"></i>
+                                    </div>
+                                    <p>No bookmarks yet. Find a nice recipe and bookmark it :)</p>
+                                </div>
+
+                                <!-- <li class="preview bg-[#f9f5f3] mb-[.5rem] duration-150 hover:-translate-y-[1px]">
+                                    <a class="preview__link flex items-center py-[1.5rem] px-[3.25rem] border-r border-solid border-[#fff]" href="#23456">
+                                      <figure class="preview__fig grow-0 shrink-0 basis-[5.8rem] rounded-[50%] overflow-hidden mr-[2rem] relative h-[5.8rem]">
+                                        <img src="http://forkify-api.herokuapp.com/images/epicuriousfacebook511b.png" alt="Test" class="w-full h-full block object-cover "/>
+                                      </figure>
+                                      <div class="preview__data grid w-full gap-y-[.1rem] items-center">
+                                        <h4 class="preview__name  col-span-full uppercase font-semibold text-[1.5rem] text-result-text text-ellipsis overflow-hidden whitespace-nowrap">
+                                          Pasta with Tomato Cream ...
+                                        </h4>
+                                        <p class="preview__publisher uppercase font-semibold text-[1.2rem] text-[#918581]">The Pioneer Woman</p>
+                                        <div class="preview__user-generated bg-[#eeeae8] flex items-center justify-center h-[2.4rem] w-[2.4rem] rounded-[10rem] ml-auto mr-[1.5rem]">
+                                            <i class="fa-regular fa-user text-[1.5rem] text-result-text"></i>
+                                        </div>
+                                      </div>
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="grid grid-cols-3 w-[95%] m-auto ">
+            <div class="search-results py-[3rem] px-0 flex flex-col">
+                <div class="results mb-[2rem]">
+                    <!-- <div class="preview duration-300 hover:bg-[#f9f5f3]">
+                        <a href="" class="preview__link flex items-center py-[3rem] px-[2rem] duration-300 border border-r-2 border-white border-solid">
+                            <figure class="preview__fig grow-0 shrink-0 basis-[5.8rem] h-[5.8rem] rounded-[50%] border-none mr-[2rem] relative overflow-hidden">
+                                <img src="http://forkify-api.herokuapp.com/images/epicuriousfacebook511b.png" class="block w-full h-full object-cover">
+                            </figure>
+                            <div class="preview__data grid gap-y-[.1rem] items-center">
+                                <h4 class="preview__title col-span-full uppercase font-semibold text-[1.5rem] text-result-text text-ellipsis overflow-hidden whitespace-nowrap"> Pasta with Tomato Cream ...</h4>
+                                <p class="preview__publisher uppercase font-semibold text-[1.2rem] text-[#918581]">The Pioneer Woman</p>
+                                <div class="preview__user-generated bg-[#eeeae8] flex items-center justify-center h-[2.4rem] w-[2.4rem] rounded-[10rem] ml-auto mr-[1.5rem]">
+                                    <i class="fa-regular fa-user text-[1.5rem] text-result-text"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div> -->
+                </div>
+                <div class="pagination mt-auto px-[3.5rem] flex justify-between items-center">
+                    <!-- <button data-goto="1" class="btn--inline pagination__btn--prev text-result-text border-none bg-[#f9f5f3] m-auto py-[.9rem] px-[1.5rem] rounded-[2rem] cursor-pointer flex items-center flex-nowrap duration-300 hover:bg-[#f2efee]">
+                        <i class="fa-solid fa-arrow-left text-[1.4rem] mr-[.5rem]"></i>
+                        <span class="text-[1.4rem] ">Page 1</span>
+                    </button> -->
+                    <button data-goto="3" class="btn--inline pagination__btn--next text-result-text border-none bg-[#f9f5f3] ml-auto py-[.9rem] px-[1.5rem] rounded-[2rem] cursor-pointer flex items-center flex-nowrap duration-300 hover:bg-[#f2efee]">
+                        <span class="text-[1.4rem]">page 3</span>
+                        <i class="fa-solid fa-arrow-right text-[1.4rem] ml-[.5rem]"></i>
+
+                    </button>
+                </div>
+            </div>
+            <div class="recipe col-span-2 bg-[#f9f5f3] min-h-screen">
+                
+                <div class="message flex justify-center gap-4 text-center my-[5rem] mx-auto">
+                    <div class="mr-[1rem] text-result-text ">
+                        <i class="fa-regular fa-face-smile text-[2.5rem]"></i>
+                    </div>
+                    <p class="flex-wrap">Start by searching for a recipe or an ingredient. Have fun!</p>
+                  </div>
+
+                <!-- <div class="spinner my-[5rem] mx-auto text-center">
+                    <i class="fa-solid fa-spinner text-[5rem] text-result-text animate-spin"></i>
+                </div> -->
+                
+                <!-- <div class="error flex justify-center gap-4 text-center my-[5rem] mx-auto">
+                    <div class="mr-[1rem] text-result-text ">
+                        <i class="fa-solid fa-triangle-exclamation text-[2.5rem]"></i>
+                    </div>
+                    <p class="flex-wrap">No recipes found for your query. Please try again!</p>
+                  </div>  -->
+
+                <!-- <figure class="recipe__fig relative h-[32rem] before:content-[''] before:absolute before:top-0 before:left-0 before:opacity-70 before:w-full before:h-full">
+                    <img src="http://forkify-api.herokuapp.com/images/epicuriousfacebook511b.png" alt="" class="recipe__img w-full h-full block object-cover">
+                    <h1 class="recipe__title absolute bottom-0 right-1/2 translate-x-1/2  skew-y-[-6deg]  font-bold uppercase w-1/2 text-center ">
+                        <span class="px-[2rem] py-[1.3rem] text-[#fff] text-[3.25rem] leading-[1.9] font-bold text-center box-decoration-clone">SALSA CHICKEN RICE CASSEROLE</span>
+                    </h1>
+                </figure>
+                <div class="recipe__details flex items-center px-[8rem] pt-[7.5rem] pb-[3.5rem]">
+                    <div class="recipe__info mr-[4.5rem] flex">
+                        <div class="recipe__info-icon mr-[1.1rem] ">
+                            <i class="fa-regular fa-clock text-[1.8rem] text-result-text"></i>
+                        </div>
+                            <span class="recipe__info-data recipe__info-data--minutes mr-[.5rem] font-bold">45</span>
+                            <span class="recipe__info-text uppercase">minutes</span>
+                        
+                    </div>
+                    <div class="recipe__info flex">
+                        <div class="recipe__info-icon mr-[1.1rem] ">
+                            <i class="fa-solid fa-user-group text-[1.8rem] text-result-text"></i>
+                        </div>
+                        <span class="recipe__info-data recipe__info-data--people mr-[.5rem] font-bold">45</span>
+                        <span class="recipe__info-text uppercase">servings</span>
+
+                        <div class="recipe__info-buttons flex ml-[1.5rem]">
+                            <button class="btn--tiny btn--update-servings mr-[.8rem] duration-300 hover:-translate-y-[1px]" data-update-to="">
+                                <i class="fa-regular fa-square-minus text-result-text"></i>
+                            </button>
+                            <button class="btn--tiny btn--update-servings duration-300 hover:-translate-y-[1px]" data-update-to="">
+                                <i class="fa-regular fa-square-plus text-result-text"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="recipe__user-generated flex justify-center items-center bg-[#eeeae8] w-[4rem] h-[4rem] rounded-[50%] ml-auto mr-[1.7rem]">
+                        <i class="fa-regular fa-user text-[2rem] text-result-text"></i>
+                    </div>
+                    <div class="btn--round btn--bookmark flex justify-center items-center w-[4.5rem] h-[4.5rem] bg-gradient text-[#fff] rounded-[50%] cursor-pointer duration-300 hover:scale-105">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </div>
+                </div>
+                <div class="recipe__ingredients px-[8rem] py-[5rem] bg-[#f2efee] text-[1.6rem] leading-[1.4] flex flex-col items-center">
+                    <h2 class="heading--2 text-[2rem] font-bold uppercase mb-[2.5rem] text-result-text text-center">Recipe ingredients</h2>
+                    <ul class="recipe__ingredient-list grid grid-cols-2 gap-x-[2.5rem] gap-y-[3rem]">
+                        <li class="recipe__ingredient flex">
+                            <div class="recipe__icon w-[2rem] h-[2rem] flex justify-center items-center mr-[1.1rem] mt-[.1rem]">
+                                <i class="fa-solid fa-check text-result-text "></i>
+                            </div>
+                            <div class="recipe__quantity mr-[.5rem] basis-auto">2</div>
+                            <div class="recipe__description">
+                                <span class="recipe__unit">packages frozen chopped broccoli
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="recipe__directions px-[10rem] py-[5rem] text-[1.6rem] flex flex-col items-center">
+                    <h2 class="heading--2 text-[2rem] font-bold uppercase mb-[2.5rem] text-result-text text-center">How to cook it</h2>
+                    <p class="recipe__directions-text text-center mb-[3.5rem] text-[1.7rem] text-[#918581]">
+                        This recipe was carefully designed and tested by
+                        <span class="recipe__publisher font-bold"> All Recipes.</span>
+                        Please check out directions at their website.
+                    </p>
+                    <a href="" target="_blank" class="btn--small recipe__btn px-[2.25rem] py-[1.25rem] text-[#fff] border-none bg-gradient cursor-pointer flex items-center justify-between flex-nowrap rounded-[10rem] uppercase duration-300 hover:scale-105">
+                        <span class="mr-[1rem] text-[1.3rem] font-bold">Directions</span>
+                        <i class="fa-solid fa-arrow-right text-[1.4rem]"></i>
+                    </a>
+                </div> -->
+            </div>
+        </main>
+        <div class="overlay hidden fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,.4)] backdrop-blur-sm z-50 duration-500 "></div>
+        
+        <div class="add-recipe-window hidden fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100rem] bg-[#fff] rounded-xl py-[5rem] px-[6rem] z-50  transition-all duration-500 shadow-[0_4rem_6rem_rgba(0,0,0,0.25)]">
+            <button class="btn--close-modal absolute top-[.5rem] right-[1.6rem] text-[3.5rem] cursor-pointer border-none">&times;</button>
+            <form class="upload grid grid-cols-2 gap-y-[4rem] gap-x-[6rem]">
+              <div class="upload__column grid items-center grid-cols-[1fr_2.8fr] gap-[1.5rem]">
+                <h3 class="upload__heading text-[2.25rem] font-bold uppercase mb-[1rem] grid-col col-span-full">Recipe data</h3>
+                <label>Title</label>
+                <input value="TEST23" required name="title" type="text" />
+                <label>URL</label>
+                <input value="TEST23" required name="sourceUrl" type="text" />
+                <label>Image URL</label>
+                <input value="TEST23" required name="image" type="text" />
+                <label>Publisher</label>
+                <input value="TEST23" required name="publisher" type="text" />
+                <label>Prep time</label>
+                <input value="23" required name="cookingTime" type="number" />
+                <label>Servings</label>
+                <input value="23" required name="servings" type="number" />
+              </div>
+      
+              <div class="upload__column grid items-center grid-cols-[1fr_2.8fr] gap-[1.5rem">
+                <h3 class="upload__heading text-[2.25rem] font-bold uppercase mb-[1rem] grid-col col-span-full">Ingredients</h3>
+                <label>Ingredient 1</label>
+                <input
+                  value="0.5,kg,Rice"
+                  type="text"
+                  required
+                  name="ingredient-1"
+                  placeholder="Format: 'Quantity,Unit,Description'"
+                />
+                <label>Ingredient 2</label>
+                <input
+                  value="1,,Avocado"
+                  type="text"
+                  name="ingredient-2"
+                  placeholder="Format: 'Quantity,Unit,Description'"
+                />
+                <label>Ingredient 3</label>
+                <input
+                  value=",,salt"
+                  type="text"
+                  name="ingredient-3"
+                  placeholder="Format: 'Quantity,Unit,Description'"
+                />
+                <label>Ingredient 4</label>
+                <input
+                  type="text"
+                  name="ingredient-4"
+                  placeholder="Format: 'Quantity,Unit,Description'"
+                />
+                <label>Ingredient 5</label>
+                <input
+                  type="text"
+                  name="ingredient-5"
+                  placeholder="Format: 'Quantity,Unit,Description'"
+                />
+                <label>Ingredient 6</label>
+                <input
+                  type="text"
+                  name="ingredient-6"
+                  placeholder="Format: 'Quantity,Unit,Description'"
+                />
+              </div>
+      
+              <button class="btn upload__btn justify-self-center col-span-full  py-5 px-12 font-bold rounded-[8rem] bg-gradient h-full text-white flex justify-between items-center gap-4 duration-300 hover:scale-105">
+                <i class="fa-solid fa-upload text-[2rem]"></i>
+                <span class="text-[2rem] font-bold">Upload</span>
+              </button>
+            </form>
+          </div>
+    </div>
+</body>
+</html>
